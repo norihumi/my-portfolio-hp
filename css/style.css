@@ -60,3 +60,38 @@ ul{
 .header__list a:hover{
     color : #555555;
 }
+
+/* ==========================================
+    ファーストビュー (hero)
+========================================== */
+.hero{
+    width : 100%;
+    background-color : #ffffff;
+}
+
+.hero__inner{
+    max-width : 1100px;
+    margin : 0 auto;
+    padding : 100px 0;
+}
+
+.hero__main{
+    font-size : 2rem;
+    font-weight : bold;
+    text-align : center;
+    margin-bottom : 20px;
+}
+
+.hero__sub{
+    font-size : 0.9rem;
+    text-align : center;
+}
+
+@media (max-width : 768px){
+    .hero__inner{
+        padding : 60px 20px;
+    }
+    .hero__main{
+        font-size : 1.5rem;
+    }
+}
