@@ -217,3 +217,68 @@ ul{
         grid-template-columns: repeat(1,1fr);
     }
 }
+
+/* ==========================================
+    モーダルウィンドウ (modal)
+========================================== */
+.modal {
+    position : fixed;
+    inset : 0;
+    z-index : 1000;
+    display : none;
+    align-items : center;
+    justify-content : center;
+    padding : 24px;
+}
+
+.modal.is-open {
+    display : flex;
+}
+
+.modal__overlay {
+    position : fixed;
+    inset : 0;
+    background-color : rgba(0, 0, 0, 0.72);
+}
+
+.modal__content {
+    position : relative;
+    z-index : 1;
+    max-width : 900px;
+    max-height : 90vh;
+    background-color : #f9f8f6;
+    padding : 20px;
+    border-radius : 8px;
+    overflow : auto;
+    text-align : center;
+}
+
+.modal__img {
+    max-width : 100%;
+    max-height : 75vh;
+    width : auto;
+    height : auto;
+    object-fit : contain;
+    display : block;
+    margin : 0 auto;
+}
+
+.modal__caption {
+    margin-top : 12px;
+    font-size : 0.95rem;
+    color : #333333;
+}
+
+.modal__close {
+    position : absolute;
+    top : 8px;
+    right : 12px;
+    width : 36px;
+    height : 36px;
+    border : none;
+    background : transparent;
+    font-size : 1.5rem;
+    line-height : 1;
+    cursor : pointer;
+    color : #333333;
+}

@@ -24,3 +24,54 @@ filterButtons.forEach((button) => {
         });
     });
 });
+
+// =======================================
+// モーダルウィンドウ
+// =======================================
+const modal = document.getElementById('workModal');
+const modalImg = document.getElementById('modalImg');
+const modalCaption = document.getElementById('modalCaption');
+const closeTargets = document.querySelectorAll('[data-modal-close]');
+
+// バナー・チラシのカードだけ対象にする
+const previewCards = document.querySelectorAll('.works__card[data-category="banner"], .works__card[data-category="flyer"]');
+
+function openModal(imgSrc, imgAlt, titleText) {
+    modalImg.src = imgSrc;
+    modalImg.alt = imgAlt;
+    modalCaption.textContent = titleText;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // 背景スクロールを一時停止
+}
+
+function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    modalImg.src = '';
+    document.body.style.overflow = '';
+}
+
+previewCards.forEach((card) => {
+    const link = card.querySelector('a');
+    const thumbImg = card.querySelector('.works__img img');
+    const titleEl = card.querySelector('.works__main');
+
+    if (!link || !thumbImg) return;
+
+    link.addEventListener('click', (e) => {
+        e.preventDefault(); // '#' へのページジャンプを防ぐ
+        const titleText = titleEl ? titleEl.textContent.trim() : thumbImg.alt;
+        openModal(thumbImg.src, thumbImg.alt, titleText);
+    });
+});
+
+closeTargets.forEach((el) => {
+    el.addEventListener('click', closeModal);
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+    }
+});
